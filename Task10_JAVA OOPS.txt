@@ -1,0 +1,226 @@
+1. Create a class called 'Person' with attributes "name" and "age".Also create a constructor and getter method for the attribute.
+import java.util.Scanner;
+public class Person {
+    int age;
+    String name;
+    
+public Person(int age , String name){
+    this.age=age;
+    this.name=name;
+}
+public int getValue(){
+    return age;
+    return name;
+}
+}
+
+public static void main(String[] args){
+    
+    Person p =new Person(27,Poornima);
+    System.out.println(p.getValue());
+    
+}
+
+2.Create an implementation for a java class.
+
+interface FirstInterface {
+  public void getID(int number);
+  public void getFirstName(String name);
+  public void getLastName(String lastname);
+  public void getName(String fullname);
+}
+
+interface SecondInterface {
+  public void getSalary(int salary);
+  public void getAnnualSalary(int annual);
+  public void raiseSalary(int percent,int fina);
+ public void toString(int id,String getFirstName,String getLastName);
+
+}
+
+class DemoClass implements FirstInterface, SecondInterface {
+  public void getID(int number){
+    System.out.println(number);
+  }
+public void getFirstName(String name){
+   System.out.println(name);
+}
+public void getLastName(String lastname){
+   System.out.println(lastname);
+}
+public void getName(String fullname){
+   System.out.println(fullname);
+}
+public void getSalary(int salary){
+   System.out.println(salary);
+}
+public void getAnnualSalary(int salary){
+   int fina = salary*12;    
+}
+public void raiseSalary(int percent,int fina){
+   int newsalary = percent*fina;    
+}
+public void toString(int id,String getFirstName,String getLastName){
+System.out.println("Employee[id="+id+",Firstname="+getFirstName+", Lastname="+getLastName+"]");
+}
+}
+
+class Main {
+  public static void main(String[] args) {
+    DemoClass myObj = new DemoClass();
+    myObj.getID(110);
+    myObj.getFirstName("Poornima");
+    myObj.getLastName("Gokulram");
+    myObj.getName("Poornima Gokulram");
+    myObj.getSalary(2000);
+    myObj.getAnnualSalary(2000);
+    myObj.raiseSalary(12,24000);
+    myObj.toString(110,"Poornima","Gokulram");
+
+  }
+}
+
+3.Create a class circle class with radius . create 2 constructor and method to calculate the circumference.
+
+import java.util.Scanner;
+public class Circle {
+    private double radius;
+    private double PI=3.14;
+public Circle(){
+    
+}
+public Circle(double radius){
+    this.radius=radius;
+}
+public double getCircumference(){
+    return 2*PI*radius;
+}
+
+public static void main(String[] args){
+    
+    Circle c =new Circle(1.0);
+    System.out.println(c.getCircumference());
+    
+}
+}
+
+4. Create a class Account  and data member as "balance". create 2 constructor and 2 methods to withdraw and deposit
+
+import java.util.Scanner;
+public class Account {
+    private int balance;
+    private int deposit;
+public Account(){
+    
+}
+public Account(int balance,int deposit){
+    this.balance=balance;
+    this.deposit=deposit;
+}
+public int withdraw(){
+    return balance;
+}
+public int deposit(){
+    return balance+deposit;
+}
+
+public static void main(String[] args){
+    
+    Account ac =new Account(2000,1000);
+    System.out.println(ac.withdraw());
+    System.out.println(ac.deposit());
+    
+    
+}
+}
+
+5. Create Tea class with 3 methods. PrepareTea() , addMilk() , addSugar()
+
+import java.util.Scanner;
+public class Tea {
+    private String basictea = "tea";
+    private String milk ="tea with milk";
+    private String sugar="tea with sugar";
+
+public String prepareTea(){
+    return basictea;
+}
+public String addMilk(){
+    return milk;
+}
+public String addSugar(){
+    return sugar;
+}
+
+public static void main(String[] args){
+    
+    Tea t =new Tea();
+    System.out.println(t.prepareTea());
+    System.out.println(t.addMilk());
+    System.out.println(t.addSugar());
+    
+}
+}
+
+6.Create 3 subclass of Tea class : Blacktea, Green tea and Herbal tea. Each subclasss should override prepareTea() to prepare specify tea with appropriate ingredient.
+
+import java.util.Scanner;
+public class Tea {
+
+public String prepareTea(){
+    System.out.println("tea");
+}
+
+public class BlackTea extends Tea {
+    public String prepareTea(){
+        System.out.println("blacktea");
+    }}
+public class GreenTea extends BlackTea {
+    public String prepareTea(){
+        System.out.println("greentea");
+    }}
+public class Herbaltea extends GreenTea {
+    public String prepareTea(){
+        System.out.println("herbaltea");
+    }}
+
+7.Implement polymorphism and create an array of objects that includes instance of tea class and sub class.
+
+import java.util.Scanner;
+public class Tea {
+private String basictea = "tea";
+public String prepareTea(){
+return basictea;
+}
+    
+}
+
+class GreenTea extends Tea{
+private String green = "greentea";
+public String prepareTea(){
+return green;
+}}
+
+class BlackTea extends Tea{
+private String black = "blacktea";
+public String prepareTea(){
+return black;
+}}
+
+class HerbalTea extends Tea{
+private String herbal = "greentea";
+public String prepareTea(){
+return herbal;
+}}
+
+
+
+class Main{
+public static void main(String[] args)
+    {
+    Tea t;
+    t = new GreenTea();  
+    t = new HerbalTea();
+    t = new BlackTea();
+    }
+}
