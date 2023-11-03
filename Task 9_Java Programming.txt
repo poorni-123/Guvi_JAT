@@ -1,0 +1,174 @@
+Task 9:
+1.	Write a program to check whether a given string is a palindrome or not using for loop and if else statement.
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        int number = sc.nextInt();
+        int temp= number;
+        int add=0;
+        while(number>0)
+        {
+            int rem = number % 10;
+            add = (add * 10)+rem;
+            number = number /10;
+            
+        }
+        if (add == temp)
+        {
+            System.out.println("Palindrome:"+temp);
+        }
+        else
+        {
+            System.out.println("Not a palindrome:"+temp);
+        }
+    }
+}
+2.Write a program to that reads a string from user and display the reversed string using loop.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+       Scanner sc = new Scanner (System.in);
+       String name = sc.nextLine();
+       String reverse=" ";
+       char temp;
+       for (int i=0;i<name.length();i++)
+       {
+        temp= name.charAt(i);
+        reverse= temp+reverse;
+       }
+       
+       System.out.println("Reversed string is :"+reverse);
+    }
+}
+3.Write a program to print below pattern:
+Input : 4
+Output:
+1
+23
+456
+789 10
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner (System.in);
+        int n = sc.nextInt();
+        int temp=1;
+        for (int i=1;i<=n;i++)
+        {
+          for (int j=1;j<=i;j++)
+          {
+              System.out.print(temp+++"\t");
+          }
+          
+          System.out.println();
+        }
+    }
+}
+
+4.Write a program to print the given below pattern:
+Input – 5
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner (System.in);
+        int n = sc.nextInt();
+        int k=n*2-1;
+        for (int i=1;i<=k;i++)
+        {
+          for (int j=1;j<=k;j++)
+          {
+              if (j==i || j==k-i+1)
+              System.out.print("*"+"\t");
+          }
+          
+          System.out.println();
+        }
+    }
+}
+5.Anna university grading system
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner (System.in);
+        int marks = sc.nextInt();
+        if (marks <50){
+            System.out.println('F');
+        }else if(marks >= 50 && marks <=59){
+            System.out.println('E');
+        }else if(marks >= 60 && marks <= 69){
+            System.out.println('D');
+        }else if(marks >= 70 && marks <= 79){
+            System.out.println('C');
+        }else if(marks >= 80 && marks <= 89){
+            System.out.println('B');
+        }else if(marks >= 90 && marks <= 99){
+            System.out.println('D');
+        }else if(marks ==100){
+            System.out.println('S');
+            
+        }else{
+            System.out.println("Invalid marks!");
+        }
+        
+    }
+}
+    
+            
+    
+            
+        
+    
+
+
+
+
+6.Write a program to calculate the hotel tariff .The room rent is 20% high due to peak seasons.
+Input Format:
+The first input containing an integer which denotes the number of month 
+The second input containing the float number which denoted the room rent per day 
+The third input containing the integer which denote the number of days stayed in the hotel.
+Output format:
+Print the tariff to be paid in floating point with 2 decimal places.
+Solution:
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner (System.in);
+        int numberofmonth = sc.nextInt();
+        float roomrent = sc.nextFloat();
+        int numberofdays = sc.nextInt();
+        int total=sc.nextInt();
+        switch(total){
+        case 1: 
+            float tariff = (roomrent * numberofdays);
+            System.out.printf("%.2f",tariff);
+            break;
+        default:
+           System.out.println("Please calculate properly");
+           break;
+            
+        }
+    }
+}
+7.Write a program to calculate largest of 3 three numbers.
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int number1= sc.nextInt();
+        int number2= sc.nextInt();
+        int number3= sc.nextInt();
+        if ((number1 > number2) && (number1 > number3)){
+            System.out.println("Greater number is:" +number1);
+        }else if ((number2 > number1) && (number2 > number3)){
+            System.out.println("Greater number is:" +number2);
+        }else if ((number3 > number1) && (number3 > number2)){
+            System.out.println("Greater number is:" +number3);
+        }else{
+            System.out.println("Please enter valid number!");
+        }
+    }
+}
