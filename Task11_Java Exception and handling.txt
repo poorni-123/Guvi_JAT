@@ -1,0 +1,134 @@
+1. What are the 4 access modifiers in java and significance in terms of class ,method  and variable accessibility?
+
+Ans: Private - Methods created inside private class can be accessed only by that class.
+     Public - Methods created inside public class can be accessed by any class.
+     Default - Methods can be accessed within the same class or within same package and without access modifiers inside methods.
+     Protected- Methods created inside protected class can be accessed by the same class, same package.
+
+2. What is the difference between exception and error?
+
+Ans: Exceptions means handling errors in before hand in the program that can help in smooth execution of the program. 
+     Errors are occuring after the execution of the program and those cannot be receovered in before hand.
+     
+
+3.What is the difference between checked exception and unchecked exception?
+
+Ans:Checked Exceptions will occur during compile time and this can be handled by adding throws inside the method.
+    Unchecked exceptions will occur during run time like error , Null pointer .
+
+4. Write a java program that reads user input for 2 integers and perform division. Handle the exception that is thrown when the second number is zero and display the error message to the user.
+
+Code:
+-----------
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        
+        try{
+            //User gets 2 input from User
+            Scanner obj = new Scanner(System.in);
+            int num1 = obj.nextInt();
+            int num2=obj.nextInt();
+            //Dividing the two values
+            int divisionresult = num1/num2 ;
+            System.out.println("Division of num1 and num2 gives:"+divisionresult);
+        }
+        catch (ArithmeticException e){
+            System.out.println("Division result is an error!Please enter valid numbers: " +e);
+        }
+    }
+}
+
+5. Write the code of ArrayIndexOutOfBoundsException & StringIndexOulOfBoundsException?
+
+ArrayIndexOutOfBoundExeption:
+Code:
+-----------------------------------
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        
+        try{
+            int[] array={1000,5000,300};
+            // User input of 2 numbers
+            Scanner obj = new Scanner(System.in);
+            int num1= obj.nextInt();
+            //User input
+            System.out.println("Please enter input:"+array[num1]);
+            
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Error! " +e);
+        }
+    }
+}
+
+StringIndexOutOfBoundsException:
+Code:
+------------------------------------------
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        
+        try{
+            String value = "GUVI";
+            String substring = value.substring(1,9);
+    
+        }
+            
+        
+        catch (StringIndexOutOfBoundsException e){
+            System.out.println("Error! " +e);
+        }
+    }
+}
+
+
+6.You are building a login system for a website using Java. If the user enters an incorrect password, you want to display a message informing them of the error. How would you use exception handling to handle this situation?
+
+Ans:  By creating a custom exception called "InvalidPasswordException".
+
+7.Create a custom exception in Java called "InvalidAgeException" that is thrown when the user enters an age less than 18. Implement exception handling in a Java program to catch the "InvalidAgeException" and display an error message.
+Code:
+--------------------------------------------
+import java.util.Scanner;
+class invalidAgeException extends Exception {
+ 
+    public invalidAgeException(String message) {
+        super(message);
+    }
+}
+public class Movie {
+ 
+    static void criteria(int age) throws invalidAgeException 
+    {
+        if (age<18) 
+        {
+            throw new invalidAgeException("Age is not valid for watching this movie!");
+        } 
+        else 
+        {
+            System.out.println("Eligible for Movie");
+        }
+    }
+
+
+    public static void main(String args[])  
+    {  
+        try  
+        {  
+          age(9);  
+        }  
+        catch (InvalidAgeException e)  
+        {  
+         
+            System.out.println("Exception occured: " + e);  
+        }  
+  
+        System.out.println("Eligible for Movie!");    
+    }  
+}       
+       
+
+
