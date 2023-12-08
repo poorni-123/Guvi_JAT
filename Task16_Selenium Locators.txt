@@ -1,0 +1,77 @@
+1. package SeleniumPackage;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FirstScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("Webdriver.chrome.driver","D:\\Driver\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://www.google.co.in/");
+		driver.manage().window().maximize();
+		Thread.sleep(10000);
+		String title = driver.getCurrentUrl();
+		System.out.println("URL of the page : "+title);
+		driver.navigate().refresh();
+		driver.close();
+
+	}
+
+}
+
+2.package SeleniumPackage;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FirstScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("Webdriver.chrome.driver","D:\\Driver\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://www.demoblaze.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(10000);
+		if(driver.getTitle().equals("STORE"))
+			{
+			System.out.println("Page landed on correct website");
+			}
+		else
+		{
+			System.out.println("Page not landed on correct website");
+		}
+		driver.close();
+
+	}
+
+3.package SeleniumPackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FirstScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("Webdriver.chrome.driver","D:\\Driver\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://www.wikipedia.org/");
+		driver.manage().window().maximize();
+		Thread.sleep(100);
+		WebElement search = driver.findElement(By.id("searchInput"));
+		search.sendKeys("Artificial Intelligence");
+		Thread.sleep(100);
+		search.submit();
+		Thread.sleep(100);
+		WebElement element =driver.findElement(By.xpath("//*[@id=\"ca-history\"]/a"));
+		element.click();
+		Thread.sleep(100);
+		String title =driver.getTitle();
+		System.out.println("Title is :" +title);
+		driver.close();
+
+	}
+
+}
