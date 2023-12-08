@@ -1,0 +1,15 @@
+2. java script to open google and search "Selenium Browser Driver".
+
+public class Open
+{
+ public static void main(String[] args) 
+{
+
+        System.setProperty("webdriver.chrome.driver", "C:\\eclipse\\chromedriver_win32\\chromedriver.exe"); 
+        WebDriver driver = new ChromeDriver(); 
+        driver.get("http://www.google.com"); 
+        WebElement element = driver.findElement(By.name("q"));
+        element.sendKeys("Selenium Browser Driver");
+        element.submit();
+        driver.close();
+    }
