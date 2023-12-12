@@ -1,0 +1,45 @@
+package SeleniumPackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class FirstScript {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("Webdriver.chrome.driver","D:\\Driver\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.get("http://www.snapdeal.com");
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		driver.findElement(By.className("accountInner")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//a[@href='https://www.snapdeal.com/login']")).click();
+		Thread.sleep(1000);
+		driver.switchTo().frame("loginIframe");
+		driver.findElement(By.xpath("//input[@id='userName']")).sendKeys("6384091791");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//button[@id='checkUser']")).click();
+		Thread.sleep(30000);
+		driver.findElement(By.xpath("//button[@id='loginUsingOtp']")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.className("accountInner")).click();
+		WebElement namesearch = driver.findElement(By.xpath("//span[@class='accountUserName col-xs-12 reset-padding']"));
+		Thread.sleep(1000);
+		System.out.println("Successfully logged in with name : "+ namesearch.getAttribute("value"));
+		
+		
+		
+		
+		
+		
+		driver.close();
+		
+		
+
+	}
+
+}
