@@ -1,0 +1,127 @@
+1. Create a package named "com.example.hr" that includes an Employee class. The Employee class should have the following fields:
+name - a string that represents the employee's name.
+id - an integer that represents the employee's ID number.
+salary - a double that represents the employee's salary.
+
+a.The Employee class should also have the following methods:
+
+b.public void printName - a method that prints the employee's name to the console.
+
+c.public void printSalary() - a method that prints the employee's salary to the console.
+
+d.Create a second package named "com.example.hrtest" that includes a class named "EmployeeTest". The "EmployeeTest" class should include a main method that creates an instance of the "Employee" class, sets the employee's name, ID number, and salary, and calls its methods to print the employee's name and salary
+to the console.
+
+e.In your main method, use the "import' statement to import the "com.example.hr" package and access the "Employee" class.
+
+f. Compile and run your program to verify that it successfully creates an instance of the "Employee" class and calls its methods to print the employee's name and salary to the console.
+
+
+package com.example.hr;
+
+public class Employe {
+
+	    private String name;
+	    private int id;
+	    private double salary;
+
+	    public Employe(String name, int id, double salary) 
+	    {
+	        this.name = name;
+	        this.id = id;
+	        this.salary = salary;
+	    }
+
+	    public void printName() 
+	    {
+	        System.out.println("Employee Name: " + name);
+	    }
+
+	    public void printSalary() 
+	    {
+	        System.out.println("Employee Salary: " + salary);
+	    }
+	}
+
+
+
+package com.example.hrtest;
+
+import com.example.hr.Employe;
+
+public class EmployeeTest {
+	public static void main(String[] args) {
+		        Employe emp = new Employe("Poornima", 11388365, 60000.00);
+		        emp.printName();
+		        emp.printSalary();
+		    }
+}
+
+
+2. Write a Java program to create an ArrayList of strings and then remove all the elements from the ArrayList.
+
+package SeleniumPackage;
+
+import java.util.ArrayList;
+
+public class Task12 {
+
+	public static void main(String[] args) {
+		int String;
+		ArrayList elements = new ArrayList();
+        elements.add("GUVI_1");
+        elements.add("GUVI_2");
+        elements.add("GUVI_3");
+        System.out.println("List of elements:  " + elements);
+        elements.clear();
+        System.out.println("Removed elements " + elements);
+    }
+
+	}
+
+3. Write a Java program to create a TreeMap of employee IDs and names. Then, print out the names of all the employees in alphabetical order.
+package SeleniumPackage;
+
+import java.util.Map;
+import java.util.TreeMap;
+
+
+public class Emp {
+	public static void main(String[] args) {
+
+Map<Integer,String> Employee=new TreeMap<>();
+Employee.put (2,"Poornima");
+Employee.put (3,"Sarvesh");
+Employee.put (1,"Gokul");
+for (Map.Entry<Integer, String> entry : Employee.entrySet()) {
+    System.out.println(entry.getValue());
+
+}
+}
+}
+
+
+4. Write a program to convert List to Array.
+
+package SeleniumPackage;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Task12 {
+
+	public static void main(String[] args) {
+		
+        List<String> values = new LinkedList<String>();
+        values.add("GUVI1");
+        values.add("GUVI2");
+        values.add("GUVI3");
+        values.add("GUVI4");
+        String[] newvalue = values.toArray(new String[0]);
+        for (int i = 0; i < newvalue.length; i++) {  
+            System.out.println((i+1)+" Converted values "+newvalue[i]);  
+            
+    }
+	}
+}
