@@ -1,0 +1,59 @@
+1. All possible locators from GUVI website:
+
+package SeleniumPackage;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class JavaTask {
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+		WebDriverManager.chromedriver().setup();
+		ChromeDriver driver =new ChromeDriver();
+		driver.get("https://www.guvi.in/");
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		driver.manage().deleteAllCookies();
+		
+		//Possible locators for "ID" 
+		List<WebElement> allitems = driver.findElements(By.xpath("//*[@id]"));
+		System.out.println(allitems.size());
+	    for (WebElement element:allitems) {
+	    System.out.println("Number of id's : "+element);}
+	    
+	    //Possible locators for "ClassName"
+	    List<WebElement> clsname = driver.findElements(By.xpath("//*[@class]"));
+		System.out.println(clsname.size());
+	    for (WebElement cls:clsname) {
+	    System.out.println("Number of class : "+cls);}
+	    
+	  //Possible locators for "TagName"
+	    List<WebElement> tgname = driver.findElements(By.xpath("//a"));
+		System.out.println(tgname.size());
+	    for (WebElement tg:tgname) {
+	    System.out.println("Number of tags : "+tg);}
+		
+		
+		//Possible locators for "Xpath"
+	    List<WebElement> pth = driver.findElements(By.xpath("//option"));
+		System.out.println(pth.size());
+	    for (WebElement xpth:pth) {
+	    System.out.println("Number of tags : "+xpth);}
+		
+		
+		//Possible locators for "Css selector"
+	    List<WebElement> csval = driver.findElements(By.cssSelector("a"));
+		System.out.println(csval.size());
+	    for (WebElement css:csval) {
+	    System.out.println("Number of tags : "+css);}
+		
+		
+
+	}
+
+}
