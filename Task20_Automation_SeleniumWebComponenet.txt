@@ -1,0 +1,162 @@
+1.
+
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.testng.annotations.BeforeClass;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+public class Task20{
+	WebDriver driver;
+	@BeforeClass
+	  public void browserlaunch() throws InterruptedException 
+	{
+		//Launching the chrome driver
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		//Navigating to URL
+		driver.get("https://jqueryui.com/datepicker/");
+		//Maximising the window
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		
+		
+	  }
+	
+  @Test
+  public void frame() throws InterruptedException 
+ 
+  {   
+	  //Switched to datepicker frame
+	  WebElement element = driver.findElement(By.className("demo-frame"));
+	  driver.switchTo().frame(element);
+	  //code to pick next month from calendar
+	  WebElement date=driver.findElement(By.id("datepicker"));
+	  date.click();
+	  Thread.sleep(1000);
+	  //clicking on next 
+	  WebElement nxt =driver.findElement(By.xpath("//a[@title=\"Next\"]"));
+	  nxt.click();
+	  Thread.sleep(1000);
+	  //selecting the date
+	  WebElement sltn=driver.findElement(By.xpath("(//a[@class=\"ui-state-default\"])[22]"));
+	  sltn.click();
+	  Thread.sleep(1000);
+	 //Printing the selected date 
+	  String datevalue = date.getAttribute("value");
+	  System.out.println(datevalue);
+	  Thread.sleep(1000);	  
+  }
+  
+
+  @AfterClass
+  public void Termination() 
+  
+  {
+	  driver.close();
+	  driver.quit();
+  }
+
+}
+
+
+2.
+
+package SeleniumPackage;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.testng.annotations.BeforeClass;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterClass;
+
+public class Task20 {
+	WebDriver driver;
+	@BeforeClass
+	  public void browserlaunch() throws InterruptedException 
+	{
+		//Launching the chrome driver
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		//Navigating to URL
+		driver.get("https://www.guvi.in/");
+		//Maximising the window
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		
+		
+	  }
+	
+  @Test
+  public void login() throws InterruptedException 
+ 
+  {   
+	//clicking on sign up button
+	WebElement clk = driver.findElement(By.xpath("//a[@class='nav-link btn btn-primary text-white px-4']"));
+	clk.click();
+	Thread.sleep(1000);
+	//Form filling
+	driver.findElement(By.id("name")).sendKeys("SarveshG");
+	driver.findElement(By.id("email")).sendKeys("testjavatask1@yopmail.com");
+	driver.findElement(By.id("password")).sendKeys("Gokul321#");
+	driver.findElement(By.id("mobileNumber")).sendKeys("2084422882");
+	Thread.sleep(2000);
+	driver.findElement(By.xpath("//*[@id=\"signup-btn\"]")).click();
+	Thread.sleep(1000);
+	
+	//Filling the profile details
+	WebElement currentProfile = driver.findElement(By.id("profileDrpDwn"));
+	Select CP = new Select(currentProfile);
+	CP.selectByValue("Working professional in IT");
+	Thread.sleep(1000);
+	WebElement degreeval =driver.findElement(By.id("degreeDrpDwn"));
+	Select DV=new Select(degreeval);
+	DV.selectByValue("B.E. / B.Tech. Mechanical Engineering");
+	driver.findElement(By.id("year")).sendKeys("2013");
+	
+	//clicking on submit button
+	driver.findElement(By.xpath("//*[@id=\"details-btn\"]")).click();
+	Thread.sleep(50000);
+	
+	
+	//Clicking on login button
+	driver.findElement(By.xpath("//*[@id=\"accountGroup\"]")).click();
+	//driver.switchTo().alert();
+	
+	//Entering email and pwd and login
+	driver.findElement(By.id("email")).sendKeys("testjavatask1@yopmail.com");
+	driver.findElement(By.id("password")).sendKeys("Gokul32#");
+	driver.findElement(By.id("login-btn")).click();
+	Thread.sleep(3000);
+	
+	//User login validation
+	WebElement lgn =driver.findElement(By.cssSelector("button[type='button']"));
+	lgn.click();
+	WebElement name= driver.findElement(By.className("col-md-9 pl-2"));
+	String txt=name.getAttribute("name");
+	System.out.println("Logged in with : "+txt);
+		
+  }
+  
+
+  @AfterClass
+  public void Termination() 
+  
+  {
+	  driver.close();
+	  driver.quit();
+	  }
+
+}
