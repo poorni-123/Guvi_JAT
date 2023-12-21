@@ -1,0 +1,105 @@
+1.Writing the data into excel file:
+
+package SeleniumPackage;
+
+import java.io.FileOutputStream;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
+public class Task13 {
+
+	public static void main(String[] args) {
+		try {
+			//FileOutputStream outputstream=new FileOutputStream("D:\\GUVI EXCEL\\Task13file.xlsx");
+			XSSFWorkbook workbook =new XSSFWorkbook();
+			XSSFSheet sheet=workbook.createSheet("Seleniumsheet");
+			Object[][] d1= {
+					{"Name","Age","Email"},
+					{"John Doe",30,"john@test.com"},
+					{"Jane Doe",28,"john@test.com"},
+					{"Bob Smith",35,"jacky@example.com"},
+					{"Swapnil",37,"swapnil@example.com"}
+			};
+			int rownum=0;
+			for(Object[] rowdata:d1) 
+			{
+				XSSFRow row=sheet.createRow(rownum++);
+				int column=0;
+				for(Object celldata:rowdata) 
+				{
+					XSSFCell cell=row.createCell(column++);
+					if(celldata instanceof String) 
+					{
+						cell.setCellValue((String)celldata);
+						
+					}else if (celldata instanceof Integer) 
+					{
+						cell.setCellValue((Integer)celldata);
+						
+					}
+				}
+			}
+			
+			try (FileOutputStream output1 =new FileOutputStream("Data.xlsx")){
+				
+				workbook.write(output1);
+				System.out.println("Data written successfully");
+			}
+			catch (Exception e){
+				e.printStackTrace();
+				
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+
+2. Reading the data
+package SeleniumPackage;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+public class Task13Readingfile {
+
+	public static void main(String[] args) {
+		String filename = "Data.xlsx";
+		try {
+			FileInputStream input =new FileInputStream(filename);
+			Workbook wb = XSSFWorkbook(input);
+			Sheet Sheet1=wb.getSheetAt(0);
+			Row row=Sheet1.getRow(1);
+			Cell cell=row.getCell(0);
+			if(cell.getCellType()==CellType.STRING) {
+				System.out.println(cell.getStringCellValue());
+			}else
+			{
+				System.out.println(cell.getNumericCellValue());
+			}
+			wb.close();
+			input.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private static Workbook XSSFWorkbook(FileInputStream input) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
