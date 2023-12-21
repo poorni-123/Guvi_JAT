@@ -1,0 +1,178 @@
+1.
+package SeleniumPackage;
+
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.testng.annotations.BeforeClass;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+
+
+public class Task21 {
+	WebDriver driver;
+	
+	@BeforeClass
+	  public void Driver() throws InterruptedException 
+	{
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.get("https://the-internet.herokuapp.com/iframe");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().deleteAllCookies();
+		
+		
+	}
+  @Test
+  public void iframe() throws InterruptedException 
+  {   
+	  WebElement frm =driver.findElement(By.cssSelector("iframe[id='mce_0_ifr']"));
+	  driver.switchTo().frame(frm);
+	  WebElement context = driver.findElement(By.tagName("p"));
+	  context.clear();
+	  context.sendKeys("Hello People");
+	  
+  }
+  
+
+  @AfterClass
+  public void Browserclose() 
+  {
+	  driver.close();
+	  driver.quit();
+  }
+
+}
+
+
+2.
+package SeleniumPackage;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Task21Question2 {
+
+	public static void main(String[] args) throws InterruptedException 
+	{   
+		//Driver instantiation
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		//getting the URL
+		driver.get("https://the-internet.herokuapp.com/windows");
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		driver.manage().deleteAllCookies();
+		//navgating to new window by click here element
+		WebElement clk = driver.findElement(By.linkText("Click Here"));
+		clk.click();
+		Thread.sleep(1000);
+		//Handling new window 
+		for (String window : driver.getWindowHandles()) 
+		{
+			driver.switchTo().window(window);
+		}
+		//Getting the window text
+		WebElement tg= driver.findElement(By.tagName("h3"));
+		String present =tg.getText();
+		System.out.println(present);
+		driver.close(); // closing the new window
+		Thread.sleep(1000);
+		//Validating the active window
+		for (String parentwindow : driver.getWindowHandles()) 
+		{
+			driver.switchTo().window(parentwindow);
+		}
+		String url =driver.getCurrentUrl();
+		System.out.println(url);
+		
+		Thread.sleep(1000);
+		
+		driver.quit();//closing the instance
+		
+		
+
+	}
+
+}
+
+3.
+package SeleniumPackage;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Task21Question3 {
+
+	public static void main(String[] args) throws InterruptedException {
+		        //Driver instantiation
+				WebDriverManager.chromedriver().setup();
+				WebDriver driver=new ChromeDriver();
+				//getting the URL
+				driver.get("http://the-internet.herokuapp.com/nested_frames");
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+				driver.manage().deleteAllCookies();
+				
+		
+				//Switch to top frame
+			
+				WebElement top=driver.findElement(By.xpath("//frame[@name='frame-top']"));
+				driver.switchTo().frame(top);
+				
+				//switch to left frame and get the text
+				WebElement lefttext=driver.findElement(By.xpath("//frame[@name='frame-left']"));
+				driver.switchTo().frame(lefttext);
+				String s =driver.findElement(By.tagName("body")).getText();
+				System.out.println(s);
+				
+				//switch to middle frame and get the text
+				driver.switchTo().parentFrame();
+				WebElement middletext=driver.findElement(By.xpath("//frame[@name='frame-middle']"));
+				driver.switchTo().frame(middletext);
+				String s1 =driver.findElement(By.id("content")).getText();
+				System.out.println(s1);
+				
+				//switch to right frame and get the text
+				driver.switchTo().parentFrame();
+				WebElement righttext=driver.findElement(By.xpath("//frame[@name='frame-right']"));
+				driver.switchTo().frame(righttext);
+				String s2 =driver.findElement(By.tagName("body")).getText();
+				System.out.println(s2);
+				
+				//switch to bottom frame
+				driver.switchTo().defaultContent();
+				WebElement bottom=driver.findElement(By.xpath("//frame[@name='frame-bottom']"));
+				driver.switchTo().frame(bottom);
+				String s3 =driver.findElement(By.tagName("body")).getText();
+				System.out.println(s3);
+
+				driver.close();
+				
+				
+				
+
+
+	}
+
+}
